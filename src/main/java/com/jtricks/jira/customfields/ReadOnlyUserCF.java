@@ -44,7 +44,9 @@ public class ReadOnlyUserCF extends GenericTextCFType {
     public Map<String, Object> getVelocityParameters(final Issue issue,
                                                      final CustomField field,
                                                      final FieldLayoutItem fieldLayoutItem) {
-        final Map<String, Object> params = super.getVelocityParameters(issue, field, fieldLayoutItem);
+
+        final Map<String, Object> params =
+                super.getVelocityParameters(issue, field, fieldLayoutItem);
         params.put("currentUser", jiraAuthenticationContext.getLoggedInUser().getName());
 
         // This method is also called to get the default value, in
