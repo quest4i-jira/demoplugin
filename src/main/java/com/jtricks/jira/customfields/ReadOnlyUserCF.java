@@ -45,18 +45,10 @@ public class ReadOnlyUserCF extends GenericTextCFType {
                                                      final CustomField field,
                                                      final FieldLayoutItem fieldLayoutItem) {
 
-        final Map<String, Object> params =
-                super.getVelocityParameters(issue, field, fieldLayoutItem);
+        final Map<String, Object> params = super.getVelocityParameters(
+                issue, field, fieldLayoutItem);
+
         params.put("currentUser", jiraAuthenticationContext.getLoggedInUser().getName());
-
-        // This method is also called to get the default value, in
-        // which case issue is null so we can't use it to add currencyLocale
-        if (issue == null) {
-            return params;
-        }
-
-        FieldConfig fieldConfig = field.getRelevantConfig(issue);
-        //add what you need to the params here
 
         return params;
     }
