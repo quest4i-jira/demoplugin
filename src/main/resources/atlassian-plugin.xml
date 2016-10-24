@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-  <plugin-info>
-    <description>${project.description}</description>
-    <version>${project.version}</version>
-    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
-    <param name="plugin-icon">images/pluginIcon.png</param>
-    <param name="plugin-logo">images/pluginLogo.png</param>
-  </plugin-info>
-  <!-- add our i18n resource -->
-  <resource type="i18n" name="i18n" location="demoplugin"/>
-  <!-- add our web resources -->
-  <web-resource key="demoplugin-resources" name="demoplugin Web Resources">
-    <dependency>com.atlassian.auiplugin:ajs</dependency>
-    <resource type="download" name="demoplugin.css" location="/css/demoplugin.css"/>
-    <resource type="download" name="demoplugin.js" location="/js/demoplugin.js"/>
-    <resource type="download" name="images/" location="/images"/>
-    <context>demoplugin</context>
-  </web-resource>
-  <customfield-type name="Read Only User CF" i18n-name-key="read-only-user-cf.name" key="read-only-user-cf" class="com.jtricks.jira.customfields.ReadOnlyUserCF">
-    <description key="read-only-user-cf.description">Read only custom field to store the name of the last edited user.</description>
-    <resource name="view"         type="velocity" location="templates/com/jtricks/view-readonly-user.vm"/>
-    <resource name="column-view"  type="velocity" location="templates/com/jtricks/view-readonly-user.vm"/>
-    <resource name="xml"          type="velocity" location="templates/com/jtricks/view-readonly-user.vm"/>
-    <resource name="edit"         type="velocity" location="templates/com/jtricks/view-readonly-user.vm"/>
-  </customfield-type>
+
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="demoplugin"/>
+
+    <!-- add our web resources -->
+    <web-resource key="demoplugin-resources" name="demoplugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="demoplugin.css" location="/css/demoplugin.css"/>
+        <resource type="download" name="demoplugin.js" location="/js/demoplugin.js"/>
+        <resource type="download" name="images/" location="/images"/>
+        <context>demoplugin</context>
+    </web-resource>
+
+    <customfield-type name="Read Only User CF" i18n-name-key="read-only-user-cf.name" key="read-only-user-cf"
+                      class="com.jtricks.jira.customfields.ReadOnlyUserCF">
+        <description key="read-only-user-cf.description">Read only custom field to store the name of the last edited
+            user.
+        </description>
+        <resource name="view" type="velocity"
+                  location="templates/com/jtricks/view-readonly-user.vm"/>
+        <resource name="column-view" type="velocity"
+                  location="templates/com/jtricks/view-readonly-user.vm"/>
+        <resource name="xml" type="velocity"
+                  location="templates/com/jtricks/view-readonly-user.vm"/>
+        <resource name="edit" type="velocity"
+                  location="templates/com/jtricks/view-readonly-user.vm"/>
+        <valid-searcher
+                package="com.atlassian.jira.plugin.system.customfieldtypes"
+                key="textsearch"/>
+    </customfield-type>
+
 </atlassian-plugin>
