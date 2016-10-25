@@ -1,1 +1,5 @@
-$!value
+#if( $!lastModifier )
+    $lastModifier
+#else
+    "no lastModifier, current user is $!currentUser"
+#end
