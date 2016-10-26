@@ -36,10 +36,12 @@ public class ReadOnlyUserCF extends GenericTextCFType {
                     TextFieldCharacterLengthValidator textFieldCharacterLengthValidator,
             @ComponentImport
                     JiraAuthenticationContext jiraAuthenticationContext,
-            @ComponentImport ChangeHistoryManager changeHistoryManager) {
+            @ComponentImport
+                    ChangeHistoryManager changeHistoryManager) {
 
         super(customFieldValuePersister, genericConfigManager,
                 textFieldCharacterLengthValidator, jiraAuthenticationContext);
+        
         this.jiraAuthenticationContext = jiraAuthenticationContext;
         this.changeHistoryManager = changeHistoryManager;
     }

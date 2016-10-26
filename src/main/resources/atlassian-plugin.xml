@@ -31,7 +31,7 @@
         <resource name="column-view" type="velocity" location="templates/com/jtricks/view-readonly-user.vm"/>
         <resource name="xml" type="velocity" location="templates/com/jtricks/view-readonly-user.vm"/>
         <resource name="edit" type="velocity" location="templates/com/jtricks/edit-readonly-user.vm"/>
-        <valid-searcher package="com.atlassian.jira.plugin.system.customfieldtypes" key="textsearch"/>
+        <valid-searcher package="com.atlassian.jira.plugin.system.customfieldtypes" key="textsearcher"/>
     </customfield-type>
 
 </atlassian-plugin>
