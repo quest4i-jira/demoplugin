@@ -4,7 +4,8 @@ import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.issue.changehistory.ChangeHistory;
 import com.atlassian.jira.issue.changehistory.ChangeHistoryManager;
 import com.atlassian.jira.issue.customfields.impl.GenericTextCFType;
-import com.atlassian.jira.issue.customfields.manager.GenericConfigManager; import com.atlassian.jira.issue.customfields.persistence.CustomFieldValuePersister;
+import com.atlassian.jira.issue.customfields.manager.GenericConfigManager;
+import com.atlassian.jira.issue.customfields.persistence.CustomFieldValuePersister;
 import com.atlassian.jira.issue.fields.CustomField;
 import com.atlassian.jira.issue.fields.TextFieldCharacterLengthValidator;
 import com.atlassian.jira.issue.fields.layout.field.FieldLayoutItem;
@@ -53,7 +54,7 @@ public class ReadOnlyUserCF extends GenericTextCFType {
         String currentUser = jiraAuthenticationContext.getLoggedInUser().getName();
         params.put("currentUser", currentUser);
 
-        try {
+        if (issue.isCreated()) {
             Optional<List<ChangeHistory>> optHistory = Optional.ofNullable(
                     changeHistoryManager.getChangeHistories(issue));
             if (optHistory.isPresent()) {
@@ -62,9 +63,8 @@ public class ReadOnlyUserCF extends GenericTextCFType {
                 log.warn("01 lastModifier : " + lastModifier);
                 params.put("lastModifier", lastModifier);
             }
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
         }
+
         return params;
     }
 }
